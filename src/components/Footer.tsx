@@ -1,5 +1,5 @@
 import React from 'react';
-import { Airplane, Envelope, MapPin, Shield, Rocket, Clock } from '@phosphor-icons/react';
+import { Envelope, MapPin, Shield, Rocket, Clock } from '@phosphor-icons/react';
 
 const Footer: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -16,10 +16,11 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
-              <div className="bg-accent/10 p-2 rounded-lg">
-                <Airplane className="w-8 h-8 text-accent" />
-              </div>
-              <span className="ml-3 text-2xl font-bold">Inspectana</span>
+              <img 
+                src="/inspectana-logo.png" 
+                alt="Inspectana Logo" 
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-primary-200 mb-8 max-w-md text-lg leading-relaxed">
               Transforming infrastructure inspections with intelligent drone technology, 

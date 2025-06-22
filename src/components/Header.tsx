@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, X, Airplane } from '@phosphor-icons/react';
+import { List, X } from '@phosphor-icons/react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,8 +46,11 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Airplane className="w-8 h-8 text-accent" />
-            <span className="ml-2 text-xl font-bold text-primary-700">Inspectana</span>
+            <img 
+              src="/inspectana-logo.png" 
+              alt="Inspectana Logo" 
+              className="h-8 w-auto"
+            />
           </div>
           
           {/* Centered Navigation */}
