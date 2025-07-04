@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
               <OptimizedImage 
                 src="/PNG.png" 
                 alt="Inspectana Logo" 
-                className="h-10 w-auto"
+                className="h-16 w-auto"
                 loading="lazy"
               />
             </div>
