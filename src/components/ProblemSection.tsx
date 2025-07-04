@@ -5,23 +5,23 @@ const ProblemSection: React.FC = () => {
   const problems = [
     {
       icon: <Clock className="w-8 h-8 text-accent" />,
-      title: "Time-Intensive Processes",
-      description: "Traditional inspections require extensive planning, manual data collection, and lengthy reporting cycles that delay critical maintenance decisions."
+      title: "Manual Processing Bottlenecks",
+      description: "Traditional inspection workflows require extensive manual review, data entry, and report generation, creating delays in claim processing and customer service."
     },
     {
       icon: <CurrencyDollar className="w-8 h-8 text-accent" />,
-      title: "Escalating Costs",
-      description: "Manual inspections involve expensive equipment, specialized personnel, and significant operational overhead that strains budgets."
+      title: "High Operational Costs",
+      description: "Manual inspections involve travel expenses, inspector fees, and administrative overhead that significantly impact operational efficiency and profitability."
     },
     {
       icon: <Warning className="w-8 h-8 text-accent" />,
-      title: "Safety Risks",
-      description: "Human inspectors face dangerous conditions when accessing high-risk infrastructure, leading to potential accidents and liability concerns."
+      title: "Inconsistent Data Quality",
+      description: "Human-dependent inspections result in variable data quality, subjective assessments, and incomplete documentation that affects underwriting accuracy."
     },
     {
       icon: <TrendDown className="w-8 h-8 text-accent" />,
-      title: "Inconsistent Data Quality",
-      description: "Human error and subjective assessments result in inconsistent data collection, making it difficult to track trends and make informed decisions."
+      title: "Limited Scalability",
+      description: "Traditional inspection methods cannot scale efficiently with growing policy volumes, creating capacity constraints and service delays."
     }
   ];
 
@@ -30,11 +30,11 @@ const ProblemSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-700 mb-6">
-            The Infrastructure Inspection Challenge
+            The Insurance Inspection Challenge
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            Traditional inspection methods are failing to meet the demands of modern infrastructure management, 
-            creating costly bottlenecks and putting critical assets at risk.
+            Insurance companies face mounting pressure to process inspections faster while maintaining accuracy and controlling costs. 
+            Traditional methods are failing to meet modern demands for efficiency and scalability.
           </p>
         </div>
 
@@ -70,9 +70,8 @@ const ProblemSection: React.FC = () => {
             Industry Impact
           </h3>
           <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-            Organizations spend up to <span className="font-bold text-accent">40% of their maintenance budget</span> on 
-            inefficient inspection processes, while critical infrastructure degradation goes undetected 
-            until costly failures occur.
+            Insurance companies spend up to <span className="font-bold text-accent">40% of their operational budget</span> on 
+            inefficient inspection processes, while customer satisfaction suffers from delays and inconsistent service delivery.
           </p>
         </div>
       </div>

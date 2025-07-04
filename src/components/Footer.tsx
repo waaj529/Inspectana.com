@@ -1,5 +1,5 @@
 import React from 'react';
-import { Envelope, MapPin, Shield, Rocket, Clock } from '@phosphor-icons/react';
+import { Airplane, Envelope, MapPin, Shield, Rocket, Clock } from '@phosphor-icons/react';
 
 const Footer: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -16,15 +16,14 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
-              <img 
-                src="/inspectana-logo.png" 
-                alt="Inspectana Logo" 
-                className="h-10 w-auto"
-              />
+              <div className="bg-accent/10 p-2 rounded-lg">
+                <Airplane className="w-8 h-8 text-accent" />
+              </div>
+              <span className="ml-3 text-2xl font-bold">Inspectana</span>
             </div>
             <p className="text-primary-200 mb-8 max-w-md text-lg leading-relaxed">
-              Transforming infrastructure inspections with intelligent drone technology, 
-              AI-powered analysis, and comprehensive reporting solutions.
+              Advanced drone inspection software for insurance companies. AI-powered analysis for 
+              4 Point Inspections, Wind Mitigations, Roof Inspections, and Post Claim Inspections.
             </p>
             
             {/* Trust indicators */}
@@ -33,13 +32,13 @@ const Footer: React.FC = () => {
                 <div className="bg-primary-700/50 rounded-lg p-4 mb-2">
                   <Shield className="w-6 h-6 text-accent mx-auto" />
                 </div>
-                <p className="text-xs text-primary-300">Professional Grade</p>
+                <p className="text-xs text-primary-300">Enterprise Grade</p>
               </div>
               <div className="text-center">
                 <div className="bg-primary-700/50 rounded-lg p-4 mb-2">
                   <Rocket className="w-6 h-6 text-accent mx-auto" />
                 </div>
-                <p className="text-xs text-primary-300">Innovation Focused</p>
+                <p className="text-xs text-primary-300">AI-Powered</p>
               </div>
               <div className="text-center">
                 <div className="bg-primary-700/50 rounded-lg p-4 mb-2">
@@ -50,9 +49,9 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Solutions */}
+          {/* Platform Features */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Solutions</h3>
+            <h3 className="text-lg font-semibold mb-6 text-white">Platform Features</h3>
             <ul className="space-y-4">
               <li>
                 <button 
@@ -60,7 +59,7 @@ const Footer: React.FC = () => {
                   className="text-primary-200 hover:text-accent transition-colors duration-200 flex items-center group text-left"
                 >
                   <span className="w-1 h-1 bg-accent rounded-full mr-3 group-hover:w-2 transition-all duration-200"></span>
-                  Infrastructure Inspection
+                  AI-Powered Analysis
                 </button>
               </li>
               <li>
@@ -69,7 +68,7 @@ const Footer: React.FC = () => {
                   className="text-primary-200 hover:text-accent transition-colors duration-200 flex items-center group text-left"
                 >
                   <span className="w-1 h-1 bg-accent rounded-full mr-3 group-hover:w-2 transition-all duration-200"></span>
-                  Predictive Maintenance
+                  Automated Reporting
                 </button>
               </li>
               <li>
@@ -78,7 +77,7 @@ const Footer: React.FC = () => {
                   className="text-primary-200 hover:text-accent transition-colors duration-200 flex items-center group text-left"
                 >
                   <span className="w-1 h-1 bg-accent rounded-full mr-3 group-hover:w-2 transition-all duration-200"></span>
-                  Asset Management
+                  System Integration
                 </button>
               </li>
               <li>
@@ -87,7 +86,7 @@ const Footer: React.FC = () => {
                   className="text-primary-200 hover:text-accent transition-colors duration-200 flex items-center group text-left"
                 >
                   <span className="w-1 h-1 bg-accent rounded-full mr-3 group-hover:w-2 transition-all duration-200"></span>
-                  Compliance Reporting
+                  Real-time Analytics
                 </button>
               </li>
             </ul>

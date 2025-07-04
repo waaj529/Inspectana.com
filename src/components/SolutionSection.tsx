@@ -5,33 +5,33 @@ const SolutionSection: React.FC = () => {
   const features = [
     {
       icon: <Drone className="w-10 h-10 text-accent" />,
-      title: "Autonomous Drone Operations",
-      description: "Pre-programmed flight paths with intelligent obstacle avoidance and real-time adaptation to environmental conditions."
+      title: "Automated Drone Operations",
+      description: "Intelligent flight planning and autonomous data collection for 4 Point, Wind Mitigation, Roof, and Post Claim inspections with minimal human intervention."
     },
     {
       icon: <Brain className="w-10 h-10 text-accent" />,
       title: "AI-Powered Analysis",
-      description: "Machine learning algorithms automatically detect anomalies, assess damage severity, and predict maintenance needs."
+      description: "Machine learning algorithms automatically detect damage, assess conditions, and generate accurate measurements with consistent, objective results."
     },
     {
       icon: <ChartBar className="w-10 h-10 text-accent" />,
       title: "Real-Time Dashboards",
-      description: "Live monitoring and instant alerts with comprehensive analytics and trend visualization for informed decision-making."
+      description: "Comprehensive analytics platform with live inspection tracking, performance metrics, and business intelligence for operational optimization."
     },
     {
       icon: <FileText className="w-10 h-10 text-accent" />,
       title: "Automated Reporting",
-      description: "Generate detailed inspection reports with photos, measurements, and recommendations in minutes, not days."
+      description: "Generate standardized inspection reports instantly with photos, measurements, and recommendations that meet insurance industry requirements."
     },
     {
       icon: <Target className="w-10 h-10 text-accent" />,
       title: "Multi-Sensor Integration",
-      description: "Combine visual, thermal, and LiDAR data for comprehensive infrastructure assessment and documentation."
+      description: "Combine visual, thermal, and LiDAR data for comprehensive property assessment with enhanced accuracy and detailed documentation."
     },
     {
       icon: <Shield className="w-10 h-10 text-accent" />,
-      title: "Professional Grade Security",
-      description: "Advanced encryption, secure data storage, and compliance with industry regulations and standards."
+      title: "Enterprise Security",
+      description: "Bank-level encryption, secure cloud storage, and compliance with insurance industry regulations and data protection standards."
     }
   ];
 
@@ -40,11 +40,11 @@ const SolutionSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-700 mb-6">
-            The Inspectana Solution
+            The Inspectana Platform
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            Our comprehensive drone inspection platform combines cutting-edge hardware with intelligent software 
-            to deliver faster, safer, and more accurate infrastructure assessments.
+            Our comprehensive software platform transforms insurance inspections with intelligent automation, 
+            AI-powered analysis, and seamless integration into your existing workflow systems.
           </p>
         </div>
 
@@ -70,36 +70,36 @@ const SolutionSection: React.FC = () => {
 
         <div className="bg-gradient-to-r from-primary-700 to-primary-600 rounded-2xl p-8 md:p-12 text-white text-center">
           <h3 className="text-2xl md:text-3xl font-bold mb-6">
-            Complete Workflow Integration
+            Streamlined Workflow Integration
           </h3>
           <div className="grid md:grid-cols-4 gap-6 text-center">
             <div className="bg-white/10 rounded-lg p-6">
               <div className="bg-accent w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold">1</span>
               </div>
-              <h4 className="font-semibold mb-2">Plan</h4>
-              <p className="text-sm text-primary-100">Define inspection routes and parameters</p>
+              <h4 className="font-semibold mb-2">Deploy</h4>
+              <p className="text-sm text-primary-100">Automated drone deployment and data collection</p>
             </div>
             <div className="bg-white/10 rounded-lg p-6">
               <div className="bg-accent w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold">2</span>
               </div>
-              <h4 className="font-semibold mb-2">Execute</h4>
-              <p className="text-sm text-primary-100">Automated drone data collection</p>
+              <h4 className="font-semibold mb-2">Analyze</h4>
+              <p className="text-sm text-primary-100">AI-powered analysis and damage detection</p>
             </div>
             <div className="bg-white/10 rounded-lg p-6">
               <div className="bg-accent w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold">3</span>
               </div>
-              <h4 className="font-semibold mb-2">Analyze</h4>
-              <p className="text-sm text-primary-100">AI-powered data processing</p>
+              <h4 className="font-semibold mb-2">Generate</h4>
+              <p className="text-sm text-primary-100">Automated report generation and validation</p>
             </div>
             <div className="bg-white/10 rounded-lg p-6">
               <div className="bg-accent w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold">4</span>
               </div>
-              <h4 className="font-semibold mb-2">Report</h4>
-              <p className="text-sm text-primary-100">Actionable insights and recommendations</p>
+              <h4 className="font-semibold mb-2">Integrate</h4>
+              <p className="text-sm text-primary-100">Seamless integration with existing systems</p>
             </div>
           </div>
         </div>

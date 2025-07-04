@@ -6,36 +6,36 @@ const BenefitsSection: React.FC = () => {
     {
       icon: <TrendUp className="w-8 h-8 text-accent" />,
       title: "87% Cost Reduction",
-      description: "Eliminate expensive manual inspections and reduce operational overhead while increasing inspection frequency.",
+      description: "Eliminate expensive manual inspections and reduce operational overhead while increasing inspection frequency and coverage.",
       metric: "Average annual savings: $2.4M"
     },
     {
       icon: <Clock className="w-8 h-8 text-accent" />,
-      title: "10x Faster Inspections",
-      description: "Complete comprehensive infrastructure assessments in hours instead of weeks with automated workflows.",
+      title: "10x Faster Processing",
+      description: "Complete comprehensive inspections in hours instead of weeks with automated workflows and instant report generation.",
       metric: "Time to insight: <2 hours"
     },
     {
       icon: <Shield className="w-8 h-8 text-accent" />,
-      title: "99.9% Safety Improvement",
-      description: "Eliminate human exposure to hazardous conditions while maintaining comprehensive inspection coverage.",
-      metric: "Zero safety incidents"
+      title: "99.9% Accuracy Improvement",
+      description: "AI-powered analysis delivers consistent, objective assessments that eliminate human error and subjective bias.",
+      metric: "Detection accuracy: 99.9%"
     },
     {
       icon: <Target className="w-8 h-8 text-accent" />,
-      title: "95% Accuracy Increase",
-      description: "AI-powered analysis delivers consistent, objective assessments that eliminate human error and bias.",
-      metric: "Detection accuracy: 99.9%"
+      title: "Unlimited Scalability",
+      description: "Process thousands of inspections simultaneously without capacity constraints or quality degradation.",
+      metric: "Concurrent inspections: 1000+"
     }
   ];
 
   const additionalBenefits = [
-    "Predictive maintenance capabilities reduce unplanned downtime by 60%",
-    "Real-time monitoring enables proactive intervention before failures occur",
-    "Comprehensive documentation improves regulatory compliance and audit readiness",
-    "Scalable solution grows with your infrastructure portfolio",
-    "Integration with existing asset management systems",
-    "24/7 monitoring capabilities for critical infrastructure"
+    "Seamless integration with existing insurance management systems",
+    "Real-time inspection tracking and progress monitoring",
+    "Comprehensive audit trails for regulatory compliance",
+    "Automated quality assurance and validation processes",
+    "Advanced analytics for risk assessment and pricing optimization",
+    "24/7 platform availability with enterprise-grade support"
   ];
 
   return (
@@ -46,7 +46,8 @@ const BenefitsSection: React.FC = () => {
             Measurable Business Impact
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            Our clients achieve significant operational improvements and cost savings within months of implementation.
+            Insurance companies using Inspectana achieve significant operational improvements and cost savings 
+            within months of implementation, transforming their inspection capabilities.
           </p>
         </div>
 
@@ -82,10 +83,10 @@ const BenefitsSection: React.FC = () => {
         <div className="bg-neutral-50 rounded-2xl p-8 md:p-12">
           <div className="text-center mb-10">
             <h3 className="text-2xl md:text-3xl font-bold text-primary-700 mb-4">
-              Additional Value Drivers
+              Platform Capabilities
             </h3>
             <p className="text-lg text-neutral-600">
-              Beyond cost savings and efficiency gains, Inspectana delivers comprehensive value across your organization.
+              Beyond cost savings and efficiency gains, Inspectana delivers comprehensive value across your insurance operations.
             </p>
           </div>
 

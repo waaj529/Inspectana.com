@@ -13,7 +13,7 @@ const ThankYouPage: React.FC = () => {
               Thank You for Your Interest!
             </h1>
             <p className="text-lg text-neutral-600 mb-8">
-              We've received your information and are excited to show you how Inspectana can transform your inspection processes.
+              We've received your inspection demo request and are excited to show you how Inspectana can transform your insurance inspection processes.
             </p>
           </div>
 
@@ -30,8 +30,8 @@ const ThankYouPage: React.FC = () => {
               <div className="flex items-start gap-3">
                 <Calendar className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-primary-700">Personal Demo</p>
-                  <p className="text-sm text-neutral-600">Our team will contact you within 24 hours to schedule a personalized demonstration.</p>
+                  <p className="font-medium text-primary-700">Inspection Demo</p>
+                  <p className="text-sm text-neutral-600">Our team will contact you within 24 hours to schedule a personalized inspection demonstration.</p>
                 </div>
               </div>
             </div>
