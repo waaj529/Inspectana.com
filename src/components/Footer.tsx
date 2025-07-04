@@ -18,10 +18,9 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
               <OptimizedImage 
-                src="/Inspectana Web Logo.png" 
+                src="/PNG.png" 
                 alt="Inspectana Logo" 
-                className="h-10 w-auto brightness-0 invert"
-                style={{filter: 'brightness(0) invert(1)'}}
+                className="h-10 w-auto"
                 loading="lazy"
               />
             </div>
