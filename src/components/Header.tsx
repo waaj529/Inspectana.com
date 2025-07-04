@@ -1,35 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { List, X } from '@phosphor-icons/react';
 import InspectionRequestModal from './InspectionRequestModal';
+import OptimizedImage from './OptimizedImage';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  const controlHeader = useCallback(() => {
+    const currentScrollY = window.scrollY;
+    
+    // Show header when at top of page
+    if (currentScrollY < 10) {
+      setIsVisible(true);
+    }
+    // Hide header when scrolling down, show when scrolling up
+    else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+      setIsVisible(false);
+      setIsMenuOpen(false); // Close mobile menu when hiding header
+    } else if (currentScrollY < lastScrollY.current) {
+      setIsVisible(true);
+    }
+    
+    lastScrollY.current = currentScrollY;
+    ticking.current = false;
+  }, []);
 
   useEffect(() => {
-    const controlHeader = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Show header when at top of page
-      if (currentScrollY < 10) {
-        setIsVisible(true);
+    const handleScroll = () => {
+      if (!ticking.current) {
+        requestAnimationFrame(controlHeader);
+        ticking.current = true;
       }
-      // Hide header when scrolling down, show when scrolling up
-      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-        setIsMenuOpen(false); // Close mobile menu when hiding header
-      } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', controlHeader);
-    return () => window.removeEventListener('scroll', controlHeader);
-  }, [lastScrollY]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [controlHeader]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -54,10 +64,11 @@ const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img 
+              <OptimizedImage 
                 src="/Inspectana Web Logo.png" 
                 alt="Inspectana Logo" 
                 className="h-8 w-auto"
+                priority={true}
               />
             </div>
             
