@@ -65,7 +65,7 @@ const Header: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <OptimizedImage 
-                src="/Inspectana Web Logo.png" 
+                src="/PNG.png" 
                 alt="Inspectana Logo" 
                 className="h-8 w-auto"
                 priority={true}
