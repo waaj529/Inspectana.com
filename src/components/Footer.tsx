@@ -16,14 +16,14 @@ const Footer: React.FC = () => {
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex flex-col items-center mb-8">
+            <div className="flex flex-col items-start gap-4 mb-8">
               <OptimizedImage 
                 src="/Untitled design.png" 
                 alt="Inspectana Logo" 
                 className="h-8 w-auto"
                 loading="lazy"
               />
-              <p className="text-primary-200 mt-4 max-w-md text-lg leading-relaxed text-center">
+              <p className="text-primary-200 max-w-md text-lg leading-relaxed">
                 Advanced drone inspection software for insurance companies. AI-powered analysis for 
                 4 Point Inspections, Wind Mitigations, Roof Inspections, and Post Claim Inspections.
               </p>
