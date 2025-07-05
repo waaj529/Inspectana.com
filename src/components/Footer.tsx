@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="flex flex-col items-start gap-4 mb-8">
               <OptimizedImage 
-                src="/Untitled design.png" 
+                src="/footer-logo.png" 
                 alt="Inspectana Logo" 
                 className="h-8 w-auto"
                 loading="lazy"
