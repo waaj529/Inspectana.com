@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex flex-col items-start gap-4 mb-8">
+            <div className="flex flex-col items-start gap-4 mb-8 max-w-md">
               <OptimizedImage 
                 src="/footer-logo.png" 
                 alt="Inspectana Logo" 
