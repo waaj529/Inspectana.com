@@ -5,13 +5,6 @@ import InspectionRequestModal from './InspectionRequestModal';
 const HeroSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const scrollToForm = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <>
       <section className="pt-16 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-500 text-white relative overflow-hidden">
@@ -47,12 +40,16 @@ const HeroSection: React.FC = () => {
                   Request Inspection
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                <button
-                  onClick={() => document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth' })}
+                <a
+                  href="#solution"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                   className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary-700 transition-all duration-300"
                 >
                   View Platform
-                </button>
+                </a>
               </div>
               <div className="flex items-center gap-6 text-sm text-primary-100 justify-center">
                 <div className="flex items-center gap-2">

@@ -45,8 +45,13 @@ const Header: React.FC = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
     }
+    setIsMenuOpen(false);
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    scrollToSection(sectionId);
   };
 
   const handleGetStarted = () => {
@@ -74,24 +79,27 @@ const Header: React.FC = () => {
             
             {/* Centered Navigation */}
             <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8">
-              <button
-                onClick={() => scrollToSection('problem')}
+              <a
+                href="#problem"
+                onClick={(e) => handleNavClick(e, 'problem')}
                 className="text-neutral-600 hover:text-primary-700 transition-colors duration-200"
               >
                 Challenge
-              </button>
-              <button
-                onClick={() => scrollToSection('solution')}
+              </a>
+              <a
+                href="#solution"
+                onClick={(e) => handleNavClick(e, 'solution')}
                 className="text-neutral-600 hover:text-primary-700 transition-colors duration-200"
               >
                 Platform
-              </button>
-              <button
-                onClick={() => scrollToSection('benefits')}
+              </a>
+              <a
+                href="#benefits"
+                onClick={(e) => handleNavClick(e, 'benefits')}
                 className="text-neutral-600 hover:text-primary-700 transition-colors duration-200"
               >
                 Benefits
-              </button>
+              </a>
             </nav>
 
             {/* CTA Button on the right */}
@@ -117,24 +125,27 @@ const Header: React.FC = () => {
           {isMenuOpen && (
             <div className="md:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-sm border-t">
-                <button
-                  onClick={() => scrollToSection('problem')}
+                <a
+                  href="#problem"
+                  onClick={(e) => handleNavClick(e, 'problem')}
                   className="text-neutral-600 hover:text-primary-700 block px-3 py-2 w-full text-left"
                 >
                   Challenge
-                </button>
-                <button
-                  onClick={() => scrollToSection('solution')}
+                </a>
+                <a
+                  href="#solution"
+                  onClick={(e) => handleNavClick(e, 'solution')}
                   className="text-neutral-600 hover:text-primary-700 block px-3 py-2 w-full text-left"
                 >
                   Platform
-                </button>
-                <button
-                  onClick={() => scrollToSection('benefits')}
+                </a>
+                <a
+                  href="#benefits"
+                  onClick={(e) => handleNavClick(e, 'benefits')}
                   className="text-neutral-600 hover:text-primary-700 block px-3 py-2 w-full text-left"
                 >
                   Benefits
-                </button>
+                </a>
                 <button
                   onClick={handleGetStarted}
                   className="bg-accent text-white block px-3 py-2 rounded-lg hover:bg-accent-600 transition-colors duration-200 w-full text-left"
