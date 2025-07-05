@@ -11,20 +11,20 @@ const Header: React.FC = () => {
   const ticking = useRef(false);
 
   const controlHeader = useCallback(() => {
-    const currentScrollY = window.scrollY;
-    
-    // Show header when at top of page
-    if (currentScrollY < 10) {
-      setIsVisible(true);
-    }
-    // Hide header when scrolling down, show when scrolling up
+      const currentScrollY = window.scrollY;
+      
+      // Show header when at top of page
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      }
+      // Hide header when scrolling down, show when scrolling up
     else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-      setIsVisible(false);
-      setIsMenuOpen(false); // Close mobile menu when hiding header
+        setIsVisible(false);
+        setIsMenuOpen(false); // Close mobile menu when hiding header
     } else if (currentScrollY < lastScrollY.current) {
-      setIsVisible(true);
-    }
-    
+        setIsVisible(true);
+      }
+      
     lastScrollY.current = currentScrollY;
     ticking.current = false;
   }, []);
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <OptimizedImage 
-                src="/PNG.png" 
+                src="/Inspectana Web Logo.png" 
                 alt="Inspectana Logo" 
                 className="h-8 w-auto"
                 priority={true}

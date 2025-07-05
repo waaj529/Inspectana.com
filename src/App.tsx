@@ -16,10 +16,10 @@ function App() {
   return (
     <Router>
       <Suspense fallback={<LoadingSpinner />}>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/thank-you" element={<ThankYouPage />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
+      </Routes>
       </Suspense>
     </Router>
   );
