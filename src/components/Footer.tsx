@@ -60,6 +60,7 @@ const Footer: React.FC = () => {
                 <button 
                   onClick={() => scrollToSection('solution')}
                   className="text-primary-200 hover:text-accent transition-colors duration-200 flex items-center group text-left"
+                  aria-label="Scroll to AI-Powered Analysis section"
                 >
                   <span className="w-1 h-1 bg-accent rounded-full mr-3 group-hover:w-2 transition-all duration-200"></span>
                   AI-Powered Analysis
@@ -69,6 +70,7 @@ const Footer: React.FC = () => {
                 <button 
                   onClick={() => scrollToSection('solution')}
                   className="text-primary-200 hover:text-accent transition-colors duration-200 flex items-center group text-left"
+                  aria-label="Scroll to Automated Reporting section"
                 >
                   <span className="w-1 h-1 bg-accent rounded-full mr-3 group-hover:w-2 transition-all duration-200"></span>
                   Automated Reporting
@@ -78,6 +80,7 @@ const Footer: React.FC = () => {
                 <button 
                   onClick={() => scrollToSection('solution')}
                   className="text-primary-200 hover:text-accent transition-colors duration-200 flex items-center group text-left"
+                  aria-label="Scroll to System Integration section"
                 >
                   <span className="w-1 h-1 bg-accent rounded-full mr-3 group-hover:w-2 transition-all duration-200"></span>
                   System Integration
@@ -87,6 +90,7 @@ const Footer: React.FC = () => {
                 <button 
                   onClick={() => scrollToSection('solution')}
                   className="text-primary-200 hover:text-accent transition-colors duration-200 flex items-center group text-left"
+                  aria-label="Scroll to Real-time Analytics section"
                 >
                   <span className="w-1 h-1 bg-accent rounded-full mr-3 group-hover:w-2 transition-all duration-200"></span>
                   Real-time Analytics
@@ -105,7 +109,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-white font-medium mb-1">Email</p>
-                  <a href="mailto:contact@inspectana.com" className="text-primary-200 hover:text-accent transition-colors">
+                  <a href="mailto:contact@inspectana.com" className="text-primary-200 hover:text-accent transition-colors" aria-label="Email Inspectana at contact@inspectana.com">
                     contact@inspectana.com
                   </a>
                 </div>
@@ -147,18 +151,21 @@ const Footer: React.FC = () => {
               <button
                 onClick={() => scrollToSection('contact')}
                 className="text-primary-300 hover:text-accent text-sm transition-colors duration-200 font-medium"
+                aria-label="Scroll to contact section to get a demo"
               >
                 Get Demo
               </button>
               <button
                 onClick={() => scrollToSection('benefits')}
                 className="text-primary-300 hover:text-accent text-sm transition-colors duration-200 font-medium"
+                aria-label="Scroll to benefits section"
               >
                 View Benefits
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
                 className="text-primary-300 hover:text-accent text-sm transition-colors duration-200 font-medium"
+                aria-label="Scroll to contact section"
               >
                 Contact Us
               </button>

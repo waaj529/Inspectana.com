@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /thank-you/
 Allow: /
 
 Sitemap: https://www.inspectana.com/sitemap.xml 
