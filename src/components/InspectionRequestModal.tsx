@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, ArrowLeft, ArrowRight, CheckCircle, User, MapPin, FileText, Shield, Phone, Envelope, Building, Hash, Warning } from '@phosphor-icons/react';
+import { X, ArrowLeft, ArrowRight, CheckCircle, User, MapPin, FileText, Shield, Phone, Envelope, Building, Hash } from '@phosphor-icons/react';
+import { AlertCircle } from 'lucide-react';
+import { dbService } from '../lib/supabase';
 
 interface FormData {
   // Step 1 - Personal Information
@@ -220,23 +222,52 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
   const handleSubmit = async () => {
     if (!validateStep(currentStep)) return;
 
+    console.log('Inspection request submission started with data:', formData);
     setIsSubmitting(true);
     
     try {
       // Clean phone numbers before submitting
       const submissionData = {
-        ...formData,
+        full_name: formData.fullName,
+        email: formData.email,
         phone: cleanPhoneNumber(formData.phone),
-        agentPhone: cleanPhoneNumber(formData.agentPhone)
+        street: formData.street,
+        city: formData.city,
+        state: formData.state,
+        zip_code: formData.zipCode,
+        inspection_type: formData.inspectionType,
+        insurance_company: formData.insuranceCompany,
+        policy_number: formData.policyNumber || undefined,
+        agency_name: formData.agencyName,
+        agent_name: formData.agentName,
+        agent_phone: cleanPhoneNumber(formData.agentPhone),
+        agent_email: formData.agentEmail
       };
       
-      // Simulate API call
-      console.log('Submitting inspection request:', submissionData);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log('Submitting to database:', submissionData);
+      // Save to database
+      const result = await dbService.createInspectionRequestDetailed(submissionData);
+      console.log('Detailed inspection request saved:', result);
       
       setIsSubmitted(true);
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Error submitting inspection request:', error);
+      if (error instanceof Error) {
+        console.error('Full error details:', {
+          message: error.message,
+          stack: error.stack,
+          name: error.name
+        });
+        
+        // Show user-friendly error message
+        if (error.message.includes('already been submitted')) {
+          alert(error.message);
+        } else {
+          alert(`There was an error submitting your request: ${error.message}. Please try again or contact us directly at contact@inspectana.com.`);
+        }
+      } else {
+        alert('An unknown error occurred. Please try again or contact us directly at contact@inspectana.com.');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -388,7 +419,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                   />
                   {errors.fullName && (
                     <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                      <Warning className="w-4 h-4" />
+                      <AlertCircle className="w-4 h-4" />
                       {errors.fullName}
                     </div>
                   )}
@@ -412,7 +443,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                     />
                     {errors.email && (
                       <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                        <Warning className="w-4 h-4" />
+                        <AlertCircle className="w-4 h-4" />
                         {errors.email}
                       </div>
                     )}
@@ -436,7 +467,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                     />
                     {errors.phone && (
                       <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                        <Warning className="w-4 h-4" />
+                        <AlertCircle className="w-4 h-4" />
                         {errors.phone}
                       </div>
                     )}
@@ -460,7 +491,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                   />
                   {errors.street && (
                     <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                      <Warning className="w-4 h-4" />
+                      <AlertCircle className="w-4 h-4" />
                       {errors.street}
                     </div>
                   )}
@@ -483,7 +514,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                     />
                     {errors.city && (
                       <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                        <Warning className="w-4 h-4" />
+                        <AlertCircle className="w-4 h-4" />
                         {errors.city}
                       </div>
                     )}
@@ -508,7 +539,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                     </select>
                     {errors.state && (
                       <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                        <Warning className="w-4 h-4" />
+                        <AlertCircle className="w-4 h-4" />
                         {errors.state}
                       </div>
                     )}
@@ -530,7 +561,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                     />
                     {errors.zipCode && (
                       <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                        <Warning className="w-4 h-4" />
+                        <AlertCircle className="w-4 h-4" />
                         {errors.zipCode}
                       </div>
                     )}
@@ -571,7 +602,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                   </select>
                   {errors.inspectionType && (
                     <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                      <Warning className="w-4 h-4" />
+                      <AlertCircle className="w-4 h-4" />
                       {errors.inspectionType}
                     </div>
                   )}
@@ -629,7 +660,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                     />
                     {errors.insuranceCompany && (
                       <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                        <Warning className="w-4 h-4" />
+                        <AlertCircle className="w-4 h-4" />
                         {errors.insuranceCompany}
                       </div>
                     )}
@@ -667,7 +698,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                   />
                   {errors.agencyName && (
                     <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                      <Warning className="w-4 h-4" />
+                      <AlertCircle className="w-4 h-4" />
                       {errors.agencyName}
                     </div>
                   )}
@@ -689,7 +720,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                   />
                   {errors.agentName && (
                     <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                      <Warning className="w-4 h-4" />
+                      <AlertCircle className="w-4 h-4" />
                       {errors.agentName}
                     </div>
                   )}
@@ -714,7 +745,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                     />
                     {errors.agentPhone && (
                       <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                        <Warning className="w-4 h-4" />
+                        <AlertCircle className="w-4 h-4" />
                         {errors.agentPhone}
                       </div>
                     )}
@@ -737,7 +768,7 @@ const InspectionRequestModal: React.FC<InspectionRequestModalProps> = ({ isOpen,
                     />
                     {errors.agentEmail && (
                       <div className="flex items-center gap-2 mt-2 text-red-600 text-sm">
-                        <Warning className="w-4 h-4" />
+                        <AlertCircle className="w-4 h-4" />
                         {errors.agentEmail}
                       </div>
                     )}
