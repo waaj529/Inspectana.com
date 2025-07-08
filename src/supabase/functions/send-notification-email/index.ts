@@ -1,38 +1,38 @@
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
-
-Deno.serve(async (req) => {
-  console.log('🚀 Edge function called with method:', req.method)
-  
-  // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
-    console.log('✅ Handling CORS preflight request')
-    return new Response('ok', { headers: corsHeaders })
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   }
-
-  try {
-    const requestBody = await req.text()
-    console.log('📥 Raw request body:', requestBody)
+  
+  Deno.serve(async (req) => {
+    console.log('🚀 Edge function called with method:', req.method)
     
-    const { type, data } = JSON.parse(requestBody)
-    console.log('📋 Parsed data:', { type, data })
-    
-    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-    const NOTIFICATION_EMAIL = Deno.env.get('NOTIFICATION_EMAIL') || 'contact@inspectana.com'
-    
-    console.log('🔑 Environment check:', {
-      hasResendKey: !!RESEND_API_KEY,
-      resendKeyLength: RESEND_API_KEY ? RESEND_API_KEY.length : 0,
-      notificationEmail: NOTIFICATION_EMAIL
-    })
-    
-    if (!RESEND_API_KEY) {
-      console.error('❌ RESEND_API_KEY is not set')
-      throw new Error('RESEND_API_KEY is not set')
+    // Handle CORS preflight requests
+    if (req.method === 'OPTIONS') {
+      console.log('✅ Handling CORS preflight request')
+      return new Response('ok', { headers: corsHeaders })
     }
-
+  
+    try {
+      const requestBody = await req.text()
+      console.log('📥 Raw request body:', requestBody)
+      
+      const { type, data } = JSON.parse(requestBody)
+      console.log('📋 Parsed data:', { type, data })
+      
+      const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
+      const NOTIFICATION_EMAIL = Deno.env.get('NOTIFICATION_EMAIL') || 'contact@inspectana.com'
+      
+      console.log('🔑 Environment check:', {
+        hasResendKey: !!RESEND_API_KEY,
+        resendKeyLength: RESEND_API_KEY ? RESEND_API_KEY.length : 0,
+        notificationEmail: NOTIFICATION_EMAIL
+      })
+      
+      if (!RESEND_API_KEY) {
+        console.error('❌ RESEND_API_KEY is not set')
+        throw new Error('RESEND_API_KEY is not set')
+      }
+  
     // Helper function to generate CSV data
     const generateCSVData = (formData: any, formType: string) => {
       if (formType === 'inspection_request' || formType === 'inspection_request_detailed') {
@@ -71,9 +71,9 @@ Deno.serve(async (req) => {
         ].map(row => row.join(',')).join('\n')
       }
     }
-
-    let emailContent = ''
-    let subject = ''
+  
+      let emailContent = ''
+      let subject = ''
     let csvData = ''
 
     if (type === 'inspection_request' || type === 'inspection_request_detailed') {
@@ -81,7 +81,7 @@ Deno.serve(async (req) => {
       subject = `🏠 New ${isDetailed ? 'Detailed ' : ''}Inspection Request from ${data.full_name}`
       csvData = generateCSVData(data, type)
       
-      emailContent = `
+        emailContent = `
         <!DOCTYPE html>
         <html>
         <head>
@@ -210,7 +210,7 @@ Deno.serve(async (req) => {
                 </table>
               </div>
             </div>
-
+            
             <!-- Export Instructions -->
             <div style="padding: 30px; background: #e7f3ff; border-bottom: 1px solid #b3d9ff;">
               <h3 style="color: #1B2E4F; margin: 0 0 15px 0; font-size: 18px;">📊 Data Export Instructions</h3>
@@ -241,7 +241,7 @@ Record ID,${data.id || 'Generated on submission'}</div>
                 </p>
               </div>
             </div>
-
+            
             <!-- Action Items -->
             <div style="padding: 30px; background: #fff3cd;">
               <h3 style="color: #856404; margin: 0 0 15px 0; font-size: 18px;">⚡ Next Steps</h3>
@@ -255,7 +255,7 @@ Record ID,${data.id || 'Generated on submission'}</div>
                 </ul>
               </div>
             </div>
-
+            
             <!-- Footer -->
             <div style="padding: 30px; text-align: center; background: #f8f9fa; border-top: 1px solid #e9ecef;">
               <p style="margin: 0 0 10px 0; color: #6c757d; font-size: 14px;">
@@ -267,16 +267,16 @@ Record ID,${data.id || 'Generated on submission'}</div>
                 For support, contact: <a href="mailto:support@inspectana.com" style="color: #EC7846;">support@inspectana.com</a>
               </p>
             </div>
-
+            
           </div>
         </body>
         </html>
-      `
-    } else if (type === 'interest_form') {
+        `
+      } else if (type === 'interest_form') {
       subject = `💼 New Demo Request from ${data.first_name} ${data.last_name} at ${data.company}`
       csvData = generateCSVData(data, type)
       
-      emailContent = `
+        emailContent = `
         <!DOCTYPE html>
         <html>
         <head>
@@ -340,7 +340,7 @@ Record ID,${data.id || 'Generated on submission'}</div>
                 </table>
               </div>
             </div>
-
+            
             ${data.message ? `
             <!-- Message -->
             <div style="padding: 30px; border-bottom: 1px solid #e9ecef;">
@@ -352,7 +352,7 @@ Record ID,${data.id || 'Generated on submission'}</div>
               </div>
             </div>
             ` : ''}
-
+            
             <!-- Export Instructions -->
             <div style="padding: 30px; background: #e7f3ff; border-bottom: 1px solid #b3d9ff;">
               <h3 style="color: #1B2E4F; margin: 0 0 15px 0; font-size: 18px;">📊 Data Export Instructions</h3>
@@ -405,68 +405,68 @@ Record ID,${data.id || 'Generated on submission'}</div>
           </div>
         </body>
         </html>
-      `
-    }
-
-    console.log('📧 Preparing to send email:', { subject, to: NOTIFICATION_EMAIL })
-
-    // Send email using Resend
-    const emailPayload = {
+        `
+      }
+  
+      console.log('📧 Preparing to send email:', { subject, to: NOTIFICATION_EMAIL })
+  
+      // Send email using Resend
+      const emailPayload = {
       from: 'Inspectana Notifications <notifications@inspectana.com>',
-      to: [NOTIFICATION_EMAIL],
-      subject: subject,
-      html: emailContent,
-    }
-
+        to: [NOTIFICATION_EMAIL],
+        subject: subject,
+        html: emailContent,
+      }
+  
     console.log('📤 Email payload prepared')
-
-    const emailResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(emailPayload),
-    })
-
-    console.log('📬 Resend API response status:', emailResponse.status)
-
-    const responseText = await emailResponse.text()
-    console.log('📬 Resend API response body:', responseText)
-
-    if (!emailResponse.ok) {
-      console.error('❌ Resend API error:', responseText)
-      throw new Error(`Resend API error (${emailResponse.status}): ${responseText}`)
-    }
-
-    const emailResult = JSON.parse(responseText)
-    console.log('✅ Email sent successfully:', emailResult)
-    
-    return new Response(
-      JSON.stringify({ 
-        success: true, 
-        emailId: emailResult.id,
+  
+      const emailResponse = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailPayload),
+      })
+  
+      console.log('📬 Resend API response status:', emailResponse.status)
+  
+      const responseText = await emailResponse.text()
+      console.log('📬 Resend API response body:', responseText)
+  
+      if (!emailResponse.ok) {
+        console.error('❌ Resend API error:', responseText)
+        throw new Error(`Resend API error (${emailResponse.status}): ${responseText}`)
+      }
+  
+      const emailResult = JSON.parse(responseText)
+      console.log('✅ Email sent successfully:', emailResult)
+      
+      return new Response(
+        JSON.stringify({ 
+          success: true, 
+          emailId: emailResult.id,
         message: 'Professional email sent with CSV export data'
-      }),
-      {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 200,
-      },
-    )
-  } catch (error) {
-    console.error('💥 Error in edge function:', error)
-    console.error('💥 Error stack:', error.stack)
-    
-    return new Response(
-      JSON.stringify({ 
-        error: error.message,
-        details: error.stack,
-        timestamp: new Date().toISOString()
-      }),
-      {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 500,
-      },
-    )
-  }
-})
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 200,
+        },
+      )
+    } catch (error) {
+      console.error('💥 Error in edge function:', error)
+      console.error('💥 Error stack:', error.stack)
+      
+      return new Response(
+        JSON.stringify({ 
+          error: error.message,
+          details: error.stack,
+          timestamp: new Date().toISOString()
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 500,
+        },
+      )
+    }
+  })

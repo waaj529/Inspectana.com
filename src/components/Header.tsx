@@ -70,12 +70,12 @@ const Header: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <a href="/" aria-label="Inspectana Home">
-                <OptimizedImage 
-                  src="/Inspectana Web Logo.png" 
-                  alt="Inspectana Logo" 
-                  className="h-8 w-auto"
-                  priority={true}
-                />
+              <OptimizedImage 
+                src="/Inspectana Web Logo.png" 
+                alt="Inspectana Logo" 
+                className="h-8 w-auto"
+                priority={true}
+              />
               </a>
             </div>
             
