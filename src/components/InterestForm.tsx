@@ -195,7 +195,7 @@ const InterestForm: React.FC = () => {
             </div>
 
             {/* Company Info - Fixed Alignment */}
-            <div className="bg-gradient-to-r from-primary-700 to-primary-600 rounded-3xl p-8 text-white relative overflow-hidden">
+            <div className="bg-gradient-to-r from-primary-700 to-primary-600 rounded-3xl p-8 text-white relative overflow-hidden shadow-2xl border border-primary-600/50">
               {/* Background decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent/30 rounded-full blur-xl"></div>
