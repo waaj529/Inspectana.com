@@ -211,51 +211,6 @@ const corsHeaders = {
               </div>
             </div>
             
-            <!-- Export Instructions -->
-            <div style="padding: 30px; background: #e7f3ff; border-bottom: 1px solid #b3d9ff;">
-              <h3 style="color: #1B2E4F; margin: 0 0 15px 0; font-size: 18px;">📊 Data Export Instructions</h3>
-              <div style="background: #ffffff; border: 1px solid #b3d9ff; border-radius: 8px; padding: 20px;">
-                <p style="margin: 0 0 15px 0; color: #495057; line-height: 1.6;">
-                  <strong>CSV Data (Copy and paste into Excel/Google Sheets):</strong>
-                </p>
-                <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; font-family: 'Courier New', monospace; font-size: 12px; overflow-x: auto; white-space: pre-wrap; color: #495057;">Field,Value
-Submission Type,${isDetailed ? 'Detailed Inspection Request' : 'Quick Inspection Request'}
-Full Name,${data.full_name}
-Email,${data.email}
-Phone,${data.phone}
-Street Address,${data.street}
-City,${data.city}
-State,${data.state}
-ZIP Code,${data.zip_code}
-Inspection Type,${data.inspection_type}
-Insurance Company,${data.insurance_company}
-Policy Number,${data.policy_number || 'Not provided'}
-Agency Name,${data.agency_name}
-Agent Name,${data.agent_name}
-Agent Phone,${data.agent_phone}
-Agent Email,${data.agent_email}
-Submitted Date,${new Date().toLocaleString()}
-Record ID,${data.id || 'Generated on submission'}</div>
-                <p style="margin: 15px 0 0 0; color: #6c757d; font-size: 14px;">
-                  💡 <strong>Tip:</strong> Select all the text above, copy (Ctrl+C), then paste into Excel or Google Sheets. The data will automatically organize into columns.
-                </p>
-              </div>
-            </div>
-            
-            <!-- Action Items -->
-            <div style="padding: 30px; background: #fff3cd;">
-              <h3 style="color: #856404; margin: 0 0 15px 0; font-size: 18px;">⚡ Next Steps</h3>
-              <div style="background: #ffffff; border: 1px solid #ffeaa7; border-radius: 8px; padding: 20px;">
-                <ul style="margin: 0; padding-left: 20px; color: #856404; line-height: 1.8;">
-                  <li><strong>Contact client within 24 hours</strong> to schedule inspection</li>
-                  <li><strong>Verify property address</strong> and access requirements</li>
-                  <li><strong>Coordinate with insurance agent</strong> for any special requirements</li>
-                  <li><strong>Schedule drone inspection</strong> based on weather conditions</li>
-                  <li><strong>Update CRM system</strong> with client information</li>
-                </ul>
-              </div>
-            </div>
-            
             <!-- Footer -->
             <div style="padding: 30px; text-align: center; background: #f8f9fa; border-top: 1px solid #e9ecef;">
               <p style="margin: 0 0 10px 0; color: #6c757d; font-size: 14px;">
@@ -353,43 +308,6 @@ Record ID,${data.id || 'Generated on submission'}</div>
             </div>
             ` : ''}
             
-            <!-- Export Instructions -->
-            <div style="padding: 30px; background: #e7f3ff; border-bottom: 1px solid #b3d9ff;">
-              <h3 style="color: #1B2E4F; margin: 0 0 15px 0; font-size: 18px;">📊 Data Export Instructions</h3>
-              <div style="background: #ffffff; border: 1px solid #b3d9ff; border-radius: 8px; padding: 20px;">
-                <p style="margin: 0 0 15px 0; color: #495057; line-height: 1.6;">
-                  <strong>CSV Data (Copy and paste into Excel/Google Sheets):</strong>
-                </p>
-                <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; font-family: 'Courier New', monospace; font-size: 12px; overflow-x: auto; white-space: pre-wrap; color: #495057;">Field,Value
-Submission Type,Demo Request
-First Name,${data.first_name}
-Last Name,${data.last_name}
-Email,${data.email}
-Company,${data.company}
-Phone,${data.phone}
-Message,${data.message || 'No message provided'}
-Submitted Date,${new Date().toLocaleString()}
-Record ID,${data.id || 'Generated on submission'}</div>
-                <p style="margin: 15px 0 0 0; color: #6c757d; font-size: 14px;">
-                  💡 <strong>Tip:</strong> Select all the text above, copy (Ctrl+C), then paste into Excel or Google Sheets. The data will automatically organize into columns.
-                </p>
-              </div>
-            </div>
-
-            <!-- Action Items -->
-            <div style="padding: 30px; background: #d1ecf1;">
-              <h3 style="color: #0c5460; margin: 0 0 15px 0; font-size: 18px;">⚡ Next Steps</h3>
-              <div style="background: #ffffff; border: 1px solid #bee5eb; border-radius: 8px; padding: 20px;">
-                <ul style="margin: 0; padding-left: 20px; color: #0c5460; line-height: 1.8;">
-                  <li><strong>Contact prospect within 24 hours</strong> to schedule demo</li>
-                  <li><strong>Prepare customized demo</strong> based on their company needs</li>
-                  <li><strong>Send calendar invite</strong> for demo session</li>
-                  <li><strong>Add to CRM pipeline</strong> as qualified lead</li>
-                  <li><strong>Prepare ROI analysis</strong> for their industry segment</li>
-                </ul>
-              </div>
-            </div>
-
             <!-- Footer -->
             <div style="padding: 30px; text-align: center; background: #f8f9fa; border-top: 1px solid #e9ecef;">
               <p style="margin: 0 0 10px 0; color: #6c757d; font-size: 14px;">
@@ -416,6 +334,12 @@ Record ID,${data.id || 'Generated on submission'}</div>
         to: [NOTIFICATION_EMAIL],
         subject: subject,
         html: emailContent,
+        attachments: [
+          {
+            filename: `${type}_${data.id || Date.now()}.csv`,
+            content: csvData,
+          },
+        ],
       }
   
     console.log('📤 Email payload prepared')
